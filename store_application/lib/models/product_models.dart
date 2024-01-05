@@ -31,7 +31,7 @@ class RatingModels {
 
   RatingModels({required this.rate, required this.count});
 
-  factory RatingModels.fronJson(jsonDat) {
-    return RatingModels(rate: jsonDat["rate"], count: jsonDat["count"]);
+  factory RatingModels.fronJson(jsonData) {
+    return RatingModels(rate: jsonData["rate"], count: jsonData["count"]);
   }
 }
