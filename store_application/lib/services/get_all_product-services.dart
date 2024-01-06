@@ -3,23 +3,7 @@ import 'dart:convert';
 import 'package:store_application/models/product_models.dart';
 import 'package:http/http.dart' as http;
 
-class GetAllProductService {}  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* class GetAllProductService {
+class GetAllProductService {
   Future<List<ProductModels>> getAllProduct() async {
     http.Response response =
         await http.get(Uri.parse("https://fakestoreapi.com/products"));
@@ -37,4 +21,4 @@ class GetAllProductService {}
 
     return productsList;
   }
-} */
+}
