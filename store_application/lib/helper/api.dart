@@ -1,1 +1,7 @@
-class Api {}
+
+
+class Api({required String url}) {
+
+
+  
+}

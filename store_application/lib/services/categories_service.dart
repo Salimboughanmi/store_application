@@ -11,16 +11,16 @@ class GetCategorytService {
     if (response.statusCode == 200) {
       List<dynamic> data = jsonDecode(response.body);
 
-      List<ProductModels> productsList = [];
+      List<ProductModels> categoryList = [];
       for (int i = 0; i < data.length; i++) {
-        productsList.add(
+        categoryList.add(
           ProductModels.fromJson(
             data[i],
           ),
         );
       }
 
-      return productsList;
+      return categoryList;
     } else {
       throw Exception(
           "there is problem with status code ${response.statusCode}");
