@@ -1,7 +1,3 @@
-
-
-class Api({required String url}) {
-
-
-  
+class Api {
+  Future<dynamic> get({required String url}) async {}
 }
