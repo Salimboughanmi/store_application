@@ -9,9 +9,7 @@ class Api {
     );
 
     if (response.statusCode == 200) {
-      List<dynamic> data = jsonDecode(response.body);
-
-      return data;
+      return jsonDecode(response.body);
     } else {
       throw Exception(
           ' "there is problem with status code ${response.statusCode}');
