@@ -16,7 +16,7 @@ class Api {
     }
   }
 
-  Future<dynamic> post({required String url}) async {
+  Future<dynamic> post({required String url, @required dynamic body}) async {
     http.Response response = http.post(url);
   }
 }
