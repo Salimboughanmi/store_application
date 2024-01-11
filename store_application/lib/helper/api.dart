@@ -15,4 +15,6 @@ class Api {
           ' "there is problem with status code ${response.statusCode}');
     }
   }
+
+  Future<dynamic> post ({})async{}
 }
