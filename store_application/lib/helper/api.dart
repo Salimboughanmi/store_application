@@ -16,5 +16,5 @@ class Api {
     }
   }
 
-  Future<dynamic> post ({})async{}
+  Future<dynamic> post({required String url}) async {}
 }
