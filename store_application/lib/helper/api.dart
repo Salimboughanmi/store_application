@@ -21,12 +21,12 @@ class Api {
       {required String url,
       @required dynamic body,
       @required String? token}) async {
+    Map<String, String> headers = {};
+    if (token != null) {
+      headers.addAll({'Authorization': 'Bearer $token'});
+    }
+
     http.Response response =
-        await http.post(Uri.parse(url), body: body, headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/x-www-form-urlencoded'
-      //'Auth'
-    });
-    print(response.body);
+        await http.post(Uri.parse(url), body: body, headers: headers);
   }
 }
