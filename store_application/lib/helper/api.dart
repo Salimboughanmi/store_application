@@ -33,7 +33,27 @@ class Api {
       return data; // or return jsondecode
       //return jsonDecode(response.body);
     } else {
-      throw Exception(response.body);
+      throw Exception(jsonDecode(response.body));
+    }
+  }
+
+  Future<dynamic> Put(
+      {required String url,
+      @required dynamic body,
+      @required String? token}) async {
+    Map<String, String> headers = {};
+    if (token != null) {
+      headers.addAll({'Authorization': 'Bearer $token'});
+    }
+
+    http.Response response =
+        await http.put(Uri.parse(url), body: body, headers: headers);
+    if (response.statusCode == 200) {
+      Map<String, dynamic> data = jsonDecode(response.body);
+      return data; // or return jsondecode
+      //return jsonDecode(response.body);
+    } else {
+      throw Exception(jsonDecode(response.body));
     }
   }
 }
