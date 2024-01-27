@@ -1,5 +1,6 @@
 class ProductModels {
   final int id;
+  final String title;
   final double price;
   final String description;
   final String category;
@@ -11,11 +12,13 @@ class ProductModels {
       required this.description,
       required this.category,
       required this.image,
-      required this.rating});
+      required this.rating,
+      required this.title});
 
   factory ProductModels.fromJson(jsonData) {
     return ProductModels(
       id: jsonData["id"],
+      title: jsonData["title"],
       price: jsonData["price"],
       description: jsonData["description"],
       category: jsonData["category"],
