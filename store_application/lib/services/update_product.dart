@@ -11,8 +11,8 @@ class UpdateProduct {
     required int id,
   }) async {
     print("prudact id = $id");
-    // ignore: missing_required_param
-    Map<String, dynamic> data = await Api().Put(
+
+    Map<String, dynamic> data = await Api().put(
       url: "https://fakestoreapi.com/products/$id",
       body: {
         "title": title,

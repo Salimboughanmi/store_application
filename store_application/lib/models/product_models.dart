@@ -1,40 +1,41 @@
 class ProductModels {
-  final int id;
+  final dynamic id;
   final String title;
-  final double price;
+  final dynamic price;
   final String description;
-  final String category;
   final String image;
-  final RatingModels rating;
+  final RatingModel? rating;
+  final String category;
   ProductModels(
       {required this.id,
+      required this.title,
+      required this.category,
       required this.price,
       required this.description,
-      required this.category,
       required this.image,
-      required this.rating,
-      required this.title});
+      required this.rating});
 
   factory ProductModels.fromJson(jsonData) {
     return ProductModels(
-      id: jsonData["id"],
-      title: jsonData["title"],
-      price: jsonData["price"],
-      description: jsonData["description"],
-      category: jsonData["category"],
-      image: jsonData["image"],
-      rating: RatingModels.fronJson(jsonData["rating"]),
-    );
+        id: jsonData['id'],
+        title: jsonData['title'],
+        category: jsonData['category'],
+        price: jsonData['price'],
+        description: jsonData['description'],
+        image: jsonData['image'],
+        rating: jsonData['rating'] == null
+            ? null
+            : RatingModel.fromJson(jsonData['rating']));
   }
 }
 
-class RatingModels {
-  final double rate;
+class RatingModel {
+  final dynamic rate;
   final int count;
 
-  RatingModels({required this.rate, required this.count});
+  RatingModel({required this.rate, required this.count});
 
-  factory RatingModels.fronJson(jsonData) {
-    return RatingModels(rate: jsonData["rate"], count: jsonData["count"]);
+  factory RatingModel.fromJson(jsonData) {
+    return RatingModel(rate: jsonData['rate'], count: jsonData['count']);
   }
 }
