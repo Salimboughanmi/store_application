@@ -42,7 +42,7 @@ class _UpdateProductPageState extends State<UpdateProductPage> {
                   height: 100,
                 ),
                 CustomTextField(
-                  hintText: 'Product Name',
+                  hintText: productR.title.substring(0, 8),
                   onChanged: (data) {
                     productname = data;
                   },
@@ -79,19 +79,20 @@ class _UpdateProductPageState extends State<UpdateProductPage> {
                   height: 40,
                 ),
                 CustomButon(
+                  text: 'Update',
                   onTap: () async {
                     isloading = true;
                     setState(() {});
                     try {
                       await UpdateProduct(productR);
-                      print("success");
+
+                      print('success');
                     } catch (e) {
                       print(e.toString());
                     }
                     isloading = false;
                     setState(() {});
                   },
-                  text: "Update Product",
                 ),
               ],
             ),
