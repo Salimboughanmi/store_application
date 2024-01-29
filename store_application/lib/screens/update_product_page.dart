@@ -19,7 +19,7 @@ class _UpdateProductPageState extends State<UpdateProductPage> {
   bool isloading = false;
   @override
   Widget build(BuildContext context) {
-    ProductModels product =
+    ProductModels productR =
         ModalRoute.of(context)!.settings.arguments as ProductModels;
     return ModalProgressHUD(
       inAsyncCall: isloading,
@@ -79,17 +79,16 @@ class _UpdateProductPageState extends State<UpdateProductPage> {
                   height: 40,
                 ),
                 CustomButon(
-                  onTap: () {
+                  onTap: () async {
                     isloading = true;
                     setState(() {});
                     try {
-                      UpdateProduct(product);
+                      await UpdateProduct(productR);
                       print("success");
-                    } on Exception catch (e) {
+                    } catch (e) {
                       print(e.toString());
-                      isloading = false;
-                      setState(() {});
                     }
+                    isloading = false;
                     setState(() {});
                   },
                   text: "Update Product",
@@ -102,13 +101,14 @@ class _UpdateProductPageState extends State<UpdateProductPage> {
     );
   }
 
-  void UpdateProduct(ProductModels product) {
-    UpdateProductService().updateProduct(
-        title: productname!,
-        price: price!,
-        desc: desc!,
-        image: image!,
-        category: product.category);
-    isloading = false;
+  Future<void> UpdateProduct(ProductModels product) async {
+    await UpdateProductService().updateProduct(
+      id: product.id,
+      title: productname == null ? product.title : productname!,
+      price: price == null ? product.price.toString() : price!,
+      desc: desc == null ? product.description : desc!,
+      image: image == null ? product.image : image!,
+      category: product.category,
+    );
   }
 }
