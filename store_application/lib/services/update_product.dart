@@ -1,8 +1,8 @@
-import 'package:store_application/helper/api.dart';
+/* import 'package:store_application/helper/api.dart';
 import 'package:store_application/models/product_models.dart';
 
-class UpdateProduct {
-  Future<ProductModels> addProduct({
+class UpdateProductService {
+  Future<ProductModels> updateProduct({
     required String title,
     required String price,
     required String desc,
@@ -14,6 +14,32 @@ class UpdateProduct {
 
     Map<String, dynamic> data = await Api().put(
       url: "https://fakestoreapi.com/products/$id",
+      body: {
+        "title": title,
+        "price": price,
+        "description": desc,
+        "image": image,
+        "category": category
+      },
+    );
+    return ProductModels.fromJson(data);
+  }
+} */
+
+import 'package:store_application/helper/api.dart';
+import 'package:store_application/models/product_models.dart';
+
+class UpdateProductService {
+  Future<ProductModels> updateProduct({
+    required String title,
+    required String price,
+    required String desc,
+    required String image,
+    required String category,
+  }) async {
+    // ignore: missing_required_param
+    Map<String, dynamic> data = await Api().put(
+      url: "https://fakestoreapi.com/products",
       body: {
         "title": title,
         "price": price,
